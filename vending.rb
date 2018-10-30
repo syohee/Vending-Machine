@@ -4,7 +4,7 @@ class Vending
     @total = 0    #投入金額の総計
     @sales = 0    #売り上げ金額
     @money = [10, 50, 100, 500, 1000]  #投入可能お金
-    @drink = [$cola, $redbull, $water] #drink 種類
+    $drink = [$cola, $redbull, $water] #drink 種類
     @stock = false
   end
 
@@ -35,7 +35,7 @@ class Vending
  end
 
  def stock_check(total)
-   @drink.each{ |v|
+   $drink.each{ |v|
       if v.stock > 0 && v.price <= total
         puts "購入可能 : " + v.name.to_s
         @stock = true
@@ -47,7 +47,7 @@ class Vending
    print "select drink : "
    drink_name = gets.chomp
 
-   @drink.each{ |v|
+   $drink.each{ |v|
      if v.name == drink_name
        if v.stock > 0 && v.price <= @total
          v.set_stock v.stock - 1
