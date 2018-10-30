@@ -1,34 +1,14 @@
-#drink
-class Drink
-  def initialize(name, price, stock)
-    @drink_name = name
-    @drink_price = price
-    @drink_stock = stock
-  end
-  def name
-    @drink_name
-  end
-  def price
-    @drink_price
-  end
-  def stock
-    @drink_stock
-  end
-  def set_stock(stock)
-    @drink_stock = stock
-  end
-  def alldata
-    "name : " + @drink_name.to_s + ", price : " + @drink_price.to_s + ", stock : " + @drink_stock.to_s
-  end
-end
+require "C:/Users/seonghee/Desktop/drink"
  # ドリンク オブジェクト
 @cola = Drink.new("cola", 120, 5)
 @redbull = Drink.new("redbull", 200, 5)
 @water = Drink.new("water", 100, 5)
- @total = 0    #投入金額の総計
+@total = 0    #投入金額の総計
 @sales = 0    #売り上げ金額
 @money = [10, 50, 100, 500, 1000]  #投入可能お金
 @drink = [@cola, @redbull, @water] #drink 種類
+@stock = false
+
  #投入
 def input_money()
 
@@ -39,7 +19,12 @@ def input_money()
   if @money.include?(user_money)
     puts "投入金額 : " + (@total += user_money).to_s
     stock_check(@total)
-    buy()
+    if @stock == true
+      buy()
+    else
+      puts "投入金額不足"
+      input_money()
+    end
   else
     puts "釣り銭 : " + user_money.to_s
   end
@@ -48,10 +33,12 @@ end
 def output_money
     puts "釣り銭 : " + @total
 end
- def stock_check(total)
+
+def stock_check(total)
   @drink.each{ |v|
      if v.stock > 0 && v.price <= total
        puts "購入可能 : " + v.name.to_s
+       @stock = true
      end }
 end
 
