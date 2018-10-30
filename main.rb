@@ -3,15 +3,14 @@ require "C:/Users/seonghee/Desktop/vending"
 
 class Main
   # ドリンク オブジェクト
-  $cola = Drink.new("cola", 120, 5)
-  $redbull = Drink.new("redbull", 200, 5)
-  $water = Drink.new("water", 100, 5)
+  $cola = Drink.new("cola", 120, 5, "cocacola", "2019-10-30", "can")
+  $redbull = Drink.new("redbull", 200, 5, "redbull", "2019-11-29", "can")
+  $water = Drink.new("water", 100, 5, "samda", "2020-9-19", "pet")
 
-  def add_drink(name, price, stock)
-    name = name.to_s
+  def add_drink(name, price, stock, maker, date, type)
     price = price.to_i
     stock = stock.to_i
-    $drink.push(Drink.new(name, price, stock))
+    $drink.push(Drink.new(name, price, stock, maker, date, type))
   end
 
   vending = Vending.new();
@@ -31,7 +30,13 @@ class Main
       price = gets.chomp
       print "stock : "
       stock = gets.chomp
-      main.add_drink(name, price, stock)
+      print "maker : "
+      maker = gets.chomp
+      print "date : "
+      date = gets.chomp
+      print "type ex)can, pet, pack : "
+      type = gets.chomp
+      main.add_drink(name, price, stock, maker, date, type)
     else
       puts "menu error"
     end

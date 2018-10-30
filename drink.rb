@@ -1,9 +1,12 @@
 #drink
 class Drink
-  def initialize(name, price, stock)
+  def initialize(name, price, stock, maker, date, type)
     @drink_name = name
     @drink_price = price
     @drink_stock = stock
+    @drink_maker = maker
+    @drink_date = date
+    @drink_type = type
   end
   def name
     @drink_name
