@@ -77,3 +77,5 @@ buy "水"
 
 @drink.each{|v| puts "現在のドリンク情報 : " + v.alldata.to_s}
 puts "現在の売上金額 : " + @sales.to_s
+
+#PR_test
