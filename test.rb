@@ -21,41 +21,45 @@ class Drink
     "name : " + @drink_name.to_s + ", price : " + @drink_price.to_s + ", stock : " + @drink_stock.to_s
   end
 end
-
-# ドリンク オブジェクト
-@cola = Drink.new("コーラ", 120, 5)
-@redbull = Drink.new("レッドブル", 200, 5)
-@water = Drink.new("水", 100, 5)
-
-@total = 0    #投入金額の総計
+ # ドリンク オブジェクト
+@cola = Drink.new("cola", 120, 5)
+@redbull = Drink.new("redbull", 200, 5)
+@water = Drink.new("water", 100, 5)
+ @total = 0    #投入金額の総計
 @sales = 0    #売り上げ金額
 @money = [10, 50, 100, 500, 1000]  #投入可能お金
 @drink = [@cola, @redbull, @water] #drink 種類
+ #投入
+def input_money()
 
-#投入
-def input_money(user_money)
+  print "input money : "
+  user_money = gets.chomp
+  user_money = user_money.to_i
+
   if @money.include?(user_money)
     puts "投入金額 : " + (@total += user_money).to_s
     stock_check(@total)
+    buy()
   else
     puts "釣り銭 : " + user_money.to_s
   end
 end
-
-#払い戻し操作
+ #払い戻し操作
 def output_money
     puts "釣り銭 : " + @total
 end
-
-def stock_check(total)
+ def stock_check(total)
   @drink.each{ |v|
      if v.stock > 0 && v.price <= total
        puts "購入可能 : " + v.name.to_s
      end }
 end
 
-#
-def buy(drink_name)
+def buy()
+
+  print "select drink : "
+  drink_name = gets.chomp
+
   @drink.each{ |v|
     if v.name == drink_name
       if v.stock > 0 && v.price <= @total
@@ -68,12 +72,11 @@ def buy(drink_name)
     end}
 end
 
-input_money 100
-input_money 100
-input_money 100
-buy "コーラ"
-buy "水"
+while true
+  input_money()
+end
 
 
-@drink.each{|v| puts "現在のドリンク情報 : " + v.alldata.to_s}
-puts "現在の売上金額 : " + @sales.to_s
+
+ # @drink.each{|v| puts "現在のドリンク情報 : " + v.alldata.to_s}
+# puts "現在の売上金額 : " + @sales.to_s
