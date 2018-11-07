@@ -27,6 +27,7 @@ end
 @water = Drink.new("water", 100, 5)
  @total = 0    #投入金額の総計
 @sales = 0    #売り上げ金額
+@buy = false
 @money = [10, 50, 100, 500, 1000]  #投入可能お金
 @drink = [@cola, @redbull, @water] #drink 種類
  #投入
@@ -39,7 +40,6 @@ def input_money()
   if @money.include?(user_money)
     puts "投入金額 : " + (@total += user_money).to_s
     stock_check(@total)
-    buy()
   else
     puts "釣り銭 : " + user_money.to_s
   end
@@ -52,7 +52,13 @@ end
   @drink.each{ |v|
      if v.stock > 0 && v.price <= total
        puts "購入可能 : " + v.name.to_s
+       @buy = true
      end }
+   if @buy == true
+     buy()
+   else
+     puts "お金不足"
+   end
 end
 
 def buy()
@@ -74,6 +80,8 @@ end
 
 while true
   input_money()
+  puts "sales : " + @sales.to_s
+  @drink.each{|v| puts "drink info : " + v.alldata.to_s}
 end
 
 
