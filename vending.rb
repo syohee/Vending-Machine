@@ -19,7 +19,7 @@ class Vending
      puts "投入金額 : " + (@total += user_money).to_s
      stock_check(@total)
      if @stock == true
-       buy()
+       return
      else
        puts "投入金額不足"
        input_money()
@@ -39,11 +39,14 @@ class Vending
       if v.stock > 0 && v.price <= total
         puts "購入可能 : " + v.name.to_s
         @stock = true
+      else
+        puts "購入不可"
+        return
       end }
  end
 
  def buy()
-
+   stock_check(@total)
    print "select drink : "
    drink_name = gets.chomp
 
