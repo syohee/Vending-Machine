@@ -19,11 +19,14 @@ class Main
   while true
     puts "menu"
     puts "1 : input money"
-    puts "2 : add drink"
+    puts "2 : select drink"
+    puts "3 : add drink"
     menu = gets.chomp
     if menu == "1"
       vending.input_money()
     elsif menu == "2"
+      vending.buy()
+    elsif menu == "3"
       print "name : "
       name = gets.chomp
       print "price : "
