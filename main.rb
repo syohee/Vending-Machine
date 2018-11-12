@@ -1,5 +1,5 @@
-require "C:/Users/seonghee/Desktop/drink"
-require "C:/Users/seonghee/Desktop/vending"
+require "./drink"
+require "./vending"
 
 class Main
   # ドリンク オブジェクト
