@@ -53,7 +53,6 @@ class Vending
  end
 
  def buy()
-   stock_check($total)
    print "select drink : "
    drink_name = gets.chomp
 
@@ -65,6 +64,8 @@ class Vending
          $total -= v.price
          puts "釣り銭 : " + ($total).to_s
          $total = 0
+       else
+         puts "buy error"
        end
      end}
  end
