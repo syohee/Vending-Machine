@@ -71,14 +71,14 @@ class Vending
  end
 
  def drink_list()
-   puts "┌───drink list───┐"
+   puts "┌────────────────────────────────────────────────drink list──────────────────────────────────────┐"
    $drink.each{|v|
      if v.stock > 0 && v.price <= $total
-       puts v.name.to_s + " [" + v.price.to_s + "] : 購入可能"
+       puts v.alldata.to_s + " -- 購入可能"
      else
-       puts v.name.to_s + " [" + v.price.to_s + "] : 購入不可"
+       puts v.alldata.to_s + " -- 購入不可"
      end}
-   puts "└────────────────┘"
+   puts "└────────────────────────────────────────────────────────────────────────────────────────────────┘"
  end
 
 end

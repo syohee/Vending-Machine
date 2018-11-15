@@ -21,6 +21,6 @@ class Drink
     @drink_stock = stock
   end
   def alldata
-    "name : " + @drink_name.to_s + ", price : " + @drink_price.to_s + ", stock : " + @drink_stock.to_s
+    "name : " + @drink_name.to_s + ", price : " + @drink_price.to_s + ", stock : " + @drink_stock.to_s + ", maker : " + @drink_maker.to_s + ", date : " + @drink_date.to_s + ", type : " + @drink_type.to_s
   end
 end
