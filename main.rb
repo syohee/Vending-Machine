@@ -33,16 +33,39 @@ class Main
     elsif menu == "3"
       print "name : "
       name = gets.chomp
+
       print "price : "
       price = gets.chomp
+      while price.to_i == 0
+        print "price error. Please again : "
+        price = gets.chomp
+      end
+
       print "stock : "
       stock = gets.chomp
+      while stock.to_i == 0
+        print "stock error. Please check : "
+        stock = gets.chomp
+      end
+
       print "maker : "
       maker = gets.chomp
+
       print "date : "
       date = gets.chomp
+      regexp = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
+      while date !~ regexp
+        print "date format error. Please check (yyyy-mm-dd) : "
+        date = gets.chomp
+      end
+
       print "type ex)can, pet, pack : "
       type = gets.chomp
+      while type != "can" && type != "pet" && type != "pack"
+        print "type error. Please check (can, pet, pack) : "
+        type = gets.chomp
+      end
+
       main.add_drink(name, price, stock, maker, date, type)
     else
       puts "menu error"
