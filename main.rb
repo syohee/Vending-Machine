@@ -17,10 +17,14 @@ class Main
   main = Main.new();
 
   while true
-    puts "menu"
+    puts "******menu******"
     puts "1 : input money"
     puts "2 : select drink"
     puts "3 : add drink"
+    puts "****************"
+    puts "投入金額 : " + $total.to_s
+    vending.drink_list()
+    print "menu select : "
     menu = gets.chomp
     if menu == "1"
       vending.input_money()
