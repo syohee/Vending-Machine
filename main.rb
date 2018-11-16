@@ -21,6 +21,7 @@ class Main
     puts "1 : input money"
     puts "2 : select drink"
     puts "3 : add drink"
+    puts "4 : get change"
     puts "****************"
     puts "投入金額 : " + $total.to_s
     vending.drink_list()
@@ -67,6 +68,8 @@ class Main
       end
 
       main.add_drink(name, price, stock, maker, date, type)
+    elsif menu == "4"
+      vending.output_money()
     else
       puts "menu error"
     end
