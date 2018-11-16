@@ -25,7 +25,8 @@ class Vending
 
   #払い戻し操作
  def output_money
-     puts "釣り銭 : " + $total
+     puts "釣り銭 : " + $total.to_s
+     $total = 0
  end
 
  def stock_check()
